@@ -13,6 +13,7 @@ I was given a few questions to solve for analysing data from a high frequency up
 
 
 I did this proof of concept using:
+
 1. Basic asynchronous programming technique (async/await and Task)
 2. DataFlow as the multithreading stream strategy (I choose not to use classic Parallel programming strategies for having a nicer consumer producer pattern)
 3. Thread switching available in WPF
