@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Question1.AnalysisModule.Views.AnalysisResultDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="700" d:DesignWidth="500">
+
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Content="Start"  TabIndex="0" Command="{Binding StartCommand}" 
+                IsEnabled="{Binding StartCommand, ElementName=CanExecute}" Margin="4"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Press Start to start receiving Analysis Result" Margin="4"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+            <TextBlock  HorizontalAlignment="Left" Margin="4" Foreground="Navy" FontWeight="Bold"
+                   VerticalAlignment="Center"  Text="#Chars:"/>
+            <TextBlock  HorizontalAlignment="Left"
+                   VerticalAlignment="Center" Text="{Binding NumberOfCharacters, StringFormat='##,###'}" Margin="4"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+            <TextBlock  HorizontalAlignment="Left" Margin="4" Foreground="Navy" FontWeight="Bold"
+                   VerticalAlignment="Center" Text="#Words:"/>
+            <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Center" Text="{Binding NumberOfWords, StringFormat='##,###'}" Margin="4"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0">
+            <TextBlock HorizontalAlignment="Left" Margin="4" Foreground="Navy" FontWeight="Bold"
+                   VerticalAlignment="Center" Text="5 Largest Words:" TextWrapping="Wrap"/>
+            <ListBox Height="130" ItemsSource="{Binding LargestWords}" Margin="4"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="4" Grid.Column="0">
+            <TextBlock HorizontalAlignment="Left" Margin="4" Foreground="Navy" FontWeight="Bold"
+                   VerticalAlignment="Center" Text="5 Smallest Words:" TextWrapping="Wrap"/>
+            <ListBox Height="130" Margin="4" ItemsSource="{Binding SmallestWords}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="0">
+        <TextBlock HorizontalAlignment="Left" Margin="4" Foreground="Navy" FontWeight="Bold"
+                   VerticalAlignment="Center" Text="Popular Words:" TextWrapping="Wrap"/>
+        <ListBox Height="260" Margin="4" ItemsSource="{Binding PopularWords}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Grid.RowSpan="5">
+            <TextBlock HorizontalAlignment="Left" Margin="4" Foreground="Navy" FontWeight="Bold"
+                   VerticalAlignment="Center" Text="Character Counts:" TextWrapping="Wrap"/>
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible"  Height="620"  Margin="4" ItemsSource="{Binding CharacterFrequency}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
